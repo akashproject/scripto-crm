@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissonSeeder::class,
             SuperAdminSeeder::class,
+            TimezoneSeeder::class,
         ]);
         // User::factory(10)->create();
     }

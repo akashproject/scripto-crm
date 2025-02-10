@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string("name");
             $table->string("type",20);
             $table->string("filename");
-            $table->string("alternative");
-            $table->string("caption");
-            $table->text("description");
+            $table->string("alternative")->nullable();
+            $table->string("caption")->nullable();
+            $table->text("description")->nullable();
             $table->string("extension",50);
             $table->string("size",50);
             $table->string("dimension",50);

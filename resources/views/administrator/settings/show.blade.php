@@ -60,7 +60,6 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
-						<h5 class="card-header">General</h5>
 						<!-- Account -->
 						<div class="card-body">
 							<div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -117,58 +116,83 @@
 						<hr class="my-0" />
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-6">
-									<div class="row">
-										<div class="mb-3 col-12">
-											<label for="enable_otp" class="form-label">Enable Otp</label>
-											<select id="enable_otp" name="enable_otp" class="select2 form-select">
-												<option value="">Enable Otp</option>
-												<option value="1" {{ (isset($settings["enable_otp"]) && $settings["enable_otp"] == "1")?"selected":"" }}> Yes</option>
-												<option value="0" {{ (isset($settings["enable_otp"]) && $settings["enable_otp"] == "0")?"selected":"" }}> No </option>
-											</select>
-										</div>
-										<div class="mb-3 col-12">
-											<label for="firstName" class="form-label">Razorpay Key</label>
-											<input
-												class="form-control"
-												type="text"
-												name="razorpay_key" 
-												id="razorpay_key"
-												value="{{ (isset($settings['razorpay_key']))?$settings['razorpay_key']:'' }}"
-												autofocus
-											/>
-										</div>
-										<div class="mb-3 col-12">
-											<label for="firstName" class="form-label">Razorpay Secret</label>
-											<input
-												class="form-control"
-												type="text"
-												name="razorpay_secret"
-												id="razorpay_secret" 
-												value="{{ (isset($settings['razorpay_secret']))?$settings['razorpay_secret']:'' }}"
-												autofocus
-											/>
-										</div>
-										<div class="mb-3 col-12">
-											<label for="footer_about" class="form-label">Footer About</label>
-											<textarea
-												class="form-control"
-												name="footer_about"
-												id="footer_about" 
-												autofocus
-											>{{ (isset($settings['footer_description']))?$settings['footer_about']:'' }}</textarea>
-										</div>
-										<div class="mb-3 col-12">
-											<label for="footer_description" class="form-label">Footer Description</label>
-											<textarea
-												class="form-control editor"
-												name="footer_description"
-												id="footer_description" 
-												autofocus
-											>{{ (isset($settings['footer_description']))?$settings['footer_description']:'' }}</textarea>
-										</div>
-										
-									</div>
+								<div class="mb-3 col-12">
+									<label for="firstName" class="form-label">Website Title</label>
+									<input
+										class="form-control"
+										type="text"
+										name="web_title"
+										id="web_title" 
+										value="{{ (isset($settings['web_title']))?$settings['web_title']:'Admin Panel | Laravel' }}"
+										autofocus
+									/>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="timezone" class="form-label">Timezone</label>
+									<select class="form-control" name="timezone" id="timezone">
+										@foreach($timezones as $timezone)
+										<option value="{{$timezone->value}}" {{ (isset($settings["timezone"]) && $settings["timezone"] == $timezone->value)?"selected":"" }}> {{$timezone->name}}</option>
+										@endforeach
+									</select>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="enable_otp" class="form-label">Enable Otp</label>
+									<select id="enable_otp" name="enable_otp" class="select2 form-select">
+										<option value="">Enable Otp</option>
+										<option value="1" {{ (isset($settings["enable_otp"]) && $settings["enable_otp"] == "1")?"selected":"" }}> Yes</option>
+										<option value="0" {{ (isset($settings["enable_otp"]) && $settings["enable_otp"] == "0")?"selected":"" }}> No </option>
+									</select>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="firstName" class="form-label">Pegination Count</label>
+									<input
+										class="form-control"
+										type="number"
+										name="pagination" 
+										id="pagination"
+										value="{{ (isset($settings['pagination']))?$settings['pagination']:'10' }}"
+										autofocus
+									/>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="firstName" class="form-label">Razorpay Key</label>
+									<input
+										class="form-control"
+										type="text"
+										name="razorpay_key" 
+										id="razorpay_key"
+										value="{{ (isset($settings['razorpay_key']))?$settings['razorpay_key']:'' }}"
+										autofocus
+									/>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="firstName" class="form-label">Razorpay Secret</label>
+									<input
+										class="form-control"
+										type="text"
+										name="razorpay_secret"
+										id="razorpay_secret" 
+										value="{{ (isset($settings['razorpay_secret']))?$settings['razorpay_secret']:'' }}"
+										autofocus
+									/>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="footer_about" class="form-label">Footer About</label>
+									<textarea
+										class="form-control"
+										name="footer_about"
+										id="footer_about" 
+										autofocus
+									>{{ (isset($settings['footer_description']))?$settings['footer_about']:'' }}</textarea>
+								</div>
+								<div class="mb-3 col-12">
+									<label for="footer_description" class="form-label">Footer Description</label>
+									<textarea
+										class="form-control editor"
+										name="footer_description"
+										id="footer_description" 
+										autofocus
+									>{{ (isset($settings['footer_description']))?$settings['footer_description']:'' }}</textarea>
 								</div>
 							</div>
 						</div>
@@ -178,54 +202,59 @@
 						<h5 class="card-header">Contact Information</h5>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-6">
-									<div class="row">
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Mobile Number</label>
-											<input
-												class="form-control"
-												type="text"
-												name="mobile" id="mobile" value="{{ (isset($settings['mobile']))?$settings['mobile']:'' }}" 
-												autofocus
-											/>
-										</div>		
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Email Address</label>
-											<input
-												class="form-control"
-												type="text"
-												name="email" id="email" value="{{ (isset($settings['email']))?$settings['email']:'' }}" 
-												autofocus
-											/>
-										</div>		
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Whatsapp Number</label>
-											<input
-												class="form-control"
-												type="text"
-												name="whatsapp" id="whatsapp" value="{{ (isset($settings['whatsapp']))?$settings['whatsapp']:'' }}" 
-												autofocus
-											/>
-										</div>	
-										<div class="mb-3 col-md-12">
-											<label for="address" class="form-label">HO Address</label>
-											<textarea
-												class="form-control"
-												name="address"
-												id="address" 
-												autofocus
-											>{{ (isset($settings['address']))?$settings['address']:'' }}</textarea>
-										</div>
-										<div class="mb-3 col-md-12">
-											<label for="gmap" class="form-label">Google Map</label>
-											<textarea
-												class="form-control"
-												name="gmap"
-												id="gmap" 
-												autofocus
-											>{{ (isset($settings['gmap']))?$settings['gmap']:'' }}</textarea>
-										</div>
-									</div>
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Mobile Number</label>
+									<input
+										class="form-control"
+										type="text"
+										name="mobile" id="mobile" value="{{ (isset($settings['mobile']))?$settings['mobile']:'' }}" 
+										autofocus
+									/>
+								</div>
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Alternative Mobile Number</label>
+									<input
+										class="form-control"
+										type="text"
+										name="alternative_mobile" id="alternative_mobile" value="{{ (isset($settings['alternative_mobile']))?$settings['alternative_mobile']:'' }}" 
+										autofocus
+									/>
+								</div>		
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Email Address</label>
+									<input
+										class="form-control"
+										type="text"
+										name="email" id="email" value="{{ (isset($settings['email']))?$settings['email']:'' }}" 
+										autofocus
+									/>
+								</div>		
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Whatsapp Number</label>
+									<input
+										class="form-control"
+										type="text"
+										name="whatsapp" id="whatsapp" value="{{ (isset($settings['whatsapp']))?$settings['whatsapp']:'' }}" 
+										autofocus
+									/>
+								</div>	
+								<div class="mb-3 col-md-6">
+									<label for="address" class="form-label">Office Address</label>
+									<textarea
+										class="form-control"
+										name="address"
+										id="address" 
+										autofocus
+									>{{ (isset($settings['address']))?$settings['address']:'' }}</textarea>
+								</div>
+								<div class="mb-3 col-md-6">
+									<label for="gmap" class="form-label">Office Google Map</label>
+									<textarea
+										class="form-control"
+										name="gmap"
+										id="gmap" 
+										autofocus
+									>{{ (isset($settings['gmap']))?$settings['gmap']:'' }}</textarea>
 								</div>
 							</div>
 						</div>
@@ -233,45 +262,41 @@
 					<div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-6">
-									<div class="row">
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Facebook</label>
-											<input
-												class="form-control"
-												type="text"
-												name="facebook" id="facebook" placeholder="Enter Facebook Link Here" value="{{ (isset($settings['facebook']))?$settings['facebook']:'' }}" 
-												autofocus
-											/>
-										</div>		
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Twitter</label>
-											<input
-												class="form-control"
-												type="text"
-												name="twitter" id="twitter" placeholder="Enter Twitter Link Here" value="{{ (isset($settings['twitter']))?$settings['twitter']:'' }}"
-												autofocus
-											/>
-										</div>		
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">LinkedIn</label>
-											<input
-												class="form-control"
-												type="text"
-												name="linkedin" id="linkedin" placeholder="Enter Linkedin Link Here" value="{{ (isset($settings['linkedin']))?$settings['linkedin']:'' }}"
-												autofocus
-											/>
-										</div>	
-										<div class="mb-3 col-md-12">
-											<label for="firstName" class="form-label">Youtube</label>
-											<input
-												class="form-control"
-												type="text"
-												name="youtube" id="youtube" placeholder="Enter YouTube Link Here" value="{{ (isset($settings['youtube']))?$settings['youtube']:'' }}"
-												autofocus
-											/>
-										</div>
-									</div>
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Facebook</label>
+									<input
+										class="form-control"
+										type="text"
+										name="facebook" id="facebook" placeholder="Enter Facebook Link Here" value="{{ (isset($settings['facebook']))?$settings['facebook']:'' }}" 
+										autofocus
+									/>
+								</div>		
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Twitter</label>
+									<input
+										class="form-control"
+										type="text"
+										name="twitter" id="twitter" placeholder="Enter Twitter Link Here" value="{{ (isset($settings['twitter']))?$settings['twitter']:'' }}"
+										autofocus
+									/>
+								</div>		
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">LinkedIn</label>
+									<input
+										class="form-control"
+										type="text"
+										name="linkedin" id="linkedin" placeholder="Enter Linkedin Link Here" value="{{ (isset($settings['linkedin']))?$settings['linkedin']:'' }}"
+										autofocus
+									/>
+								</div>	
+								<div class="mb-3 col-md-6">
+									<label for="firstName" class="form-label">Youtube</label>
+									<input
+										class="form-control"
+										type="text"
+										name="youtube" id="youtube" placeholder="Enter YouTube Link Here" value="{{ (isset($settings['youtube']))?$settings['youtube']:'' }}"
+										autofocus
+									/>
 								</div>
 							</div>
 						</div>
@@ -279,7 +304,6 @@
 				</div>	
 				<div class="mt-2">
 					<button type="submit" class="btn btn-primary me-2">Save changes</button>
-					<button type="reset" class="btn btn-outline-secondary">Cancel</button>
 				</div>
 
 			</div>

@@ -28,11 +28,7 @@
                <div data-i18n="globe">Visit Site</div>
             </a>
          </li>
-
-         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">-</span>
-         </li>
-         
+         <li class="menu-header small text-uppercase"><span class="menu-header-text">Apparence</span></li>
          <li class="menu-item">
             <a href="{{ route('admin-media') }}" class="menu-link">
                <i class="menu-icon tf-icons bx bx-image"></i>
