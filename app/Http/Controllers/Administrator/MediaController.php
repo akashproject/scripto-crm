@@ -70,14 +70,13 @@ class MediaController extends Controller
                 File::makeDirectory($folder, 0777, true); //creates directory
             }
 
-            $imageType = array("jpeg","png","jpg","jfif","webp");
+            $imageType = [
+                'jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp','heic', 'heif', 'svg', 'eps', 'pdf', 'raw', 'nef', 'cr2','arw','dng', 'ico', 'tga', 'exr'
+            ];
             if(in_array($fileDataArray['extension'], $imageType)){
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read($fileData->getRealPath());
                 $dimension = $image->width().'x'.$image->height();
-                // if($image->width() >= 768){
-                //     $this->resizeMobile('profile',$fileName,$request);
-                // }
                 $image->resize(120, 120)->save(public_path('upload/'.date("Y-m-d")).'/'."thumb_".$fileName);
             }
 
@@ -89,7 +88,6 @@ class MediaController extends Controller
             $fileDataArray['dimension'] = (isset($dimension))?$dimension:'';
             $media = Media::create($fileDataArray);
             return response()->json($media,$this->_statusOK);
-            //return redirect()->back()->with('message', 'Page updated successfully!');
         } catch(\Illuminate\Database\QueryException $e){
             //var_dump($e->getMessage()); 
         }
@@ -98,8 +96,8 @@ class MediaController extends Controller
     public function updateFile(Request $request) {
         try {
             $data = $request->all();
-            $faq = Media::findOrFail($data['file_id']);
-            $faq->update($data);
+            $file = Media::findOrFail($data['file_id']);
+            $file->update($data);
             return redirect()->back()->with('message', 'File updated successfully!');
         } catch(\Illuminate\Database\QueryException $e){
             var_dump($e->getMessage()); 

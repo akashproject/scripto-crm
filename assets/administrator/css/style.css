@@ -1,7 +1,9 @@
+.dropzone {
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+}
 .image-thumbnail {
-    width: 132px;
+    width: 110px;
     margin: 0.5rem;
-    border: 1px solid #cfcfcf;
     padding: 1px;
     display: inline-flex;
     position: relative;
@@ -20,7 +22,6 @@
   
 .image-profile {
     margin: auto;
-    border: 1px solid #cfcfcf;
     padding: 1px;
     display: inline-block;
     width: auto;
@@ -31,7 +32,6 @@
 }
   
 .filter-container {
-    border: 2px solid #d5d5d5;
     margin-bottom: 1rem;
 }
 .white-popup {
@@ -45,4 +45,5 @@
 }
 .file-content {
     display: inline-block;
+    border: 1px solid #cfcfcf;
 }

@@ -98,7 +98,7 @@
     Dropzone.options.dropzonewidget = { 
         maxFilesize: 150, // 2 MB
         success: function(file, response){ // Dropzone upload response
-            var html = '<div class="file-content text-center"><a href="#imageBox" class="image-thumbnail open-popup-link" data-id="'+response.id+'"><img src="'+`${globalUrl}`+response.path+'/thumb_'+response.filename+'" alt="" style="width:100%"><span> '+response.name+' </span></a><a target="_blank" href="'+`${globalUrl}`+'administrator/view-file/'+response.id+'" style="display:block">Edit</a></div>';
+            var html = '<div class="file-content text-center"><a href="#imageBox" class="image-thumbnail open-popup-link" data-id="'+response.id+'"><img src="'+`${globalUrl}`+response.path+'/thumb_'+response.filename+'" alt="" style="width:100%"></a><a target="_blank" href="'+`${globalUrl}`+'administrator/view-file/'+response.id+'" style="display:block">Edit</a></div>';
             $(".image-thumbnail-container").prepend(html);
         }
     };
